@@ -1,0 +1,35 @@
+{
+  "name": "rxstores-react",
+  "version": "0.0.1",
+  "description": "React binding for RXStores lib",
+  "main": "lib/index.ts",
+  "types": "lib/index.d.ts",
+  "scripts": {
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LeoCodePL/RxStores-react.git"
+  },
+  "keywords": [
+    "react",
+    "stores",
+    "global-state-mamanger",
+    "store",
+    "rx.js"
+  ],
+  "author": "LeoCode",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/LeoCodePL/RxStores-react/issues"
+  },
+  "homepage": "https://github.com/LeoCodePL/RxStores-react#readme",
+  "dependencies": {
+    "@leocode/rxstores": "leocodepl/rxstores",
+    "@types/react": "^16.9.9",
+    "eslint-plugin-react": "^7.16.0",
+    "eslint-plugin-react-hooks": "^2.1.2",
+    "react": "^16.10.2",
+    "typescript": "^3.6.4"
+  }
+}
