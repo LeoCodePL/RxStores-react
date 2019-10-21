@@ -5,7 +5,7 @@ import { Store, StoreModel } from '@leocode/rxstores/lib/store';
 export function useStore<T extends Store>(
     storeImplementation: StoreClass<T>,
     context?: string,
-): any {
+) {
 
     const [data, setData] = React.useState<StoreModel<T>>();
     const [{ methods }, setStore] = React.useState<T>(null as any);
@@ -16,7 +16,7 @@ export function useStore<T extends Store>(
         : Provider.getStore(storeImplementation);
 
         setStore(store);
-        const subscription = store.data.subscribe(setData)
+        const subscription = store.data$.subscribe(setData)
         return () => subscription.unsubscribe();
     }, [])
 
