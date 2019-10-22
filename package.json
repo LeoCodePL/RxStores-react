@@ -6,7 +6,8 @@
   "types": "lib/index.d.ts",
   "scripts": {
     "build": "tsc",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run build",
+    "prepack": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -28,12 +29,17 @@
   "devDependencies": {
     "@types/react": "^16.9.9",
     "eslint-plugin-react": "^7.16.0",
-    "eslint-plugin-react-hooks": "^2.1.2"
+    "eslint-plugin-react-hooks": "^2.1.2",
+    "typescript": "^3.6.4"
   },
   "dependencies": {
     "@leocode/rxstores": "^0.0.5",
     "react": "^16.10.2",
-    "typescript": "^3.6.4"
+    "react-dom": "^16.10.2"
   },
-  "peerDependencies": {}
+  "peerDependencies": {
+    "@leocode/rxstores": "^0.0.5",
+    "react": "^16.10.2",
+    "react-dom": "^16.10.2"
+  }
 }
