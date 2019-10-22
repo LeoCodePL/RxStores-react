@@ -33,12 +33,9 @@
     "typescript": "^3.6.4"
   },
   "dependencies": {
-    "@leocode/rxstores": "^0.0.6",
-    "react": "^16.10.2",
-    "react-dom": "^16.10.2"
+    "@leocode/rxstores": "^0.0.6"
   },
   "peerDependencies": {
-    "@leocode/rxstores": "^0.0.6",
     "react": "^16.10.2",
     "react-dom": "^16.10.2"
   }

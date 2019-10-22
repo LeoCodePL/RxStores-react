@@ -16,8 +16,8 @@ export function useStore<T extends Store>(
         return () => subscription.unsubscribe();
     }, []);
 
-    return {
+    return [
         data,
         methods
-    };
+    ];
 }
