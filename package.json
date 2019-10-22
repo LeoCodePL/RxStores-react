@@ -16,9 +16,10 @@
   "keywords": [
     "react",
     "stores",
-    "global-state-mamanger",
+    "global-state-manager",
     "store",
-    "rx.js"
+    "rxstores",
+    "rxjs"
   ],
   "author": "LeoCode",
   "license": "MIT",
@@ -33,7 +34,7 @@
     "typescript": "^3.6.4"
   },
   "dependencies": {
-    "@leocode/rxstores": "^0.0.6"
+    "@leocode/rxstores": "^0.0.7"
   },
   "peerDependencies": {
     "react": "^16.10.2",

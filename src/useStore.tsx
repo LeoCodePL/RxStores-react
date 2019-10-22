@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
-import { Provider, Store, StoreClass, StoreModel } from '@leocode/rxstores';
+import { Provider, Store, StoreClass, StoreInterface, StoreModel } from '@leocode/rxstores';
 
 export function useStore<T extends Store>(
     storeImplementation: StoreClass<T>,
     context?: string,
-) {
+): [StoreModel<T>, StoreInterface<T>] {
     const { data$, methods, value } = context
         ? Provider.from(context).getStore(storeImplementation) 
         : Provider.getStore(storeImplementation);
