@@ -1,15 +1,15 @@
 import { useEffect, useState } from 'react';
-import { Provider, StoreClass, StoreModel } from '@leocode/rxstores';
-import { Store } from '@leocode/rxstores/lib/store';
+import { Provider, Store, StoreClass, StoreModel } from '@leocode/rxstores';
 
 export function useStore<T extends Store>(
     storeImplementation: StoreClass<T>,
     context?: string,
 ) {
-    const [data, setData] = useState<StoreModel<T>>();
-    const { data$, methods } = context
+    const { data$, methods, value } = context
         ? Provider.from(context).getStore(storeImplementation) 
         : Provider.getStore(storeImplementation);
+
+    const [data, setData] = useState<StoreModel<T>>(value);
 
     useEffect(() => {
         const subscription = data$.subscribe(setData);
