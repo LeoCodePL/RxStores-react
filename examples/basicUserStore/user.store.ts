@@ -1,17 +1,21 @@
 import { Store } from "@leocode/rxstores";
 import { User } from "./user.model";
 
-export class UserStore extends Store<User> {
+export class UserStore extends Store<Partial<User>> {
   constructor() {
-    // if you have userObejct just put it here
-    super();
+    const initialValue: Partial<User> = {};
+    super(initialValue);
   }
 
-  init() {
-    // fetch some user data
+  async init() {
+    const responseData = await fetch("https://swapi.co/api/people/1/").then(
+      res => res.json()
+    );
+
+    this.value = responseData;
   }
 
-  private async setUserName(name) {
-    // do some stuff with user name
+  get isDataLoading() {
+    return Object.entries(this.value).length === 0;
   }
 }
