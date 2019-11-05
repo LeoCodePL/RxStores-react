@@ -1,6 +1,7 @@
 !lib
 node_modules
 src
+examples
 tsconfig.json
 .editorconfig
 *.tgz

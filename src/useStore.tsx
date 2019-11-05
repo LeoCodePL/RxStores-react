@@ -1,19 +1,27 @@
 import { useEffect, useState } from 'react';
 import { Provider, Store, StoreClass, StoreInterface, StoreModel } from '@leocode/rxstores';
+import { SubscriptionLike } from 'rxjs';
 
 export function useStore<T extends Store>(
     storeImplementation: StoreClass<T>,
     context?: string,
-): [StoreModel<T>, StoreInterface<T>] {
-    const { data$, methods, value } = context
-        ? Provider.from(context).getStore(storeImplementation) 
-        : Provider.getStore(storeImplementation);
+): [StoreModel<T> | undefined, StoreInterface<T> | undefined] {
+    const [data, setData] = useState<StoreModel<T>>();
+    const [methods, setMethods] = useState<StoreInterface<T>>();
+    const [subscription, setSubscription] = useState<SubscriptionLike>();
 
-    const [data, setData] = useState<StoreModel<T>>(value);
+    async function bindToStore() {
+        const store = await (context
+            ? Provider.from(context).getStore(storeImplementation)
+            : Provider.getStore(storeImplementation));
+        setData(store.value);
+        setMethods(store.methods);
+        setSubscription(store.data$.subscribe(setData));
+    }
 
     useEffect(() => {
-        const subscription = data$.subscribe(setData);
-        return () => subscription.unsubscribe();
+        bindToStore();
+        return () => subscription && subscription.unsubscribe();
     }, []);
 
     return [
